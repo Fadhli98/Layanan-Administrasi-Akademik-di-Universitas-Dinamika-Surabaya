@@ -1,0 +1,57 @@
+scipt penjalannya
+------------------
+<script>
+    
+    var minDate, maxDate;
+    
+    // Custom filtering function which will search data in column four between two values
+    $.fn.dataTable.ext.search.push(
+        function( settings, data, dataIndex ) {
+            var min = minDate.val();
+            var max = maxDate.val();
+            var date = new Date( data[4,6] );
+    
+            if (
+                ( min === null && max === null ) ||
+                ( min === null && date <= max ) ||
+                ( min <= date   && max === null ) ||
+                ( min <= date   && date <= max )
+            ) {
+                return true;
+            }
+            return false;
+        }
+    );
+    
+    $(document).ready(function() {
+        // Create date inputs
+        minDate = new DateTime($('#min'), {
+            format: 'YYYY-MM-DD'
+        });
+        maxDate = new DateTime($('#max'), {
+            format: 'YYYY-MM-DD'
+        });
+    
+        // DataTables initialisation
+        var table = $('#example').DataTable();
+    
+        // Refilter the table
+        $('#min, #max').on('change', function () {
+            table.draw();
+        });
+    });
+    </script> 
+
+input
+------
+<div class="table-responsive" style="padding:20px;width: 98%;">
+      <table border="0" cellspacing="5" cellpadding="5">
+        <tbody>
+          <tr>
+            <td>Minimum date:</td>
+            <td><input type="text" name="nama_input" id="nama_id"></td>
+            
+            <td>Maximum date:</td>
+            <td><input type="text" name="nama_input" id="nama_id"></td>
+        </tr>
+      </tbody></table>

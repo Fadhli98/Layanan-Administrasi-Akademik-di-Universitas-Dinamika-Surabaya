@@ -1,0 +1,630 @@
+<div class="wrapper">
+<nav class="main-header navbar navbar-expand-md navbar-primary navbar-dark">
+    <div class="container">
+      <a href="http://localhost/layanan/public/aak" class="navbar-brand">
+        <img src="http://localhost/layanan/public/dist/img/user.png" class="brand-image img-circle elevation-3"
+             style="opacity: .8">
+      </a>
+      
+      <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="http://localhost/layanan/public/aak" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a id="dropdownSubMenu2" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Layanan</a>
+            <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
+              <li><a href="http://localhost/layanan/public/detdispen" class="dropdown-item">Dispensasi </a></li>
+              <li><a href="http://localhost/layanan/public/detyudi" class="dropdown-item">Yudisium</a></li>
+              <li><a href="http://localhost/layanan/public/detcuti" class="dropdown-item">Cuti/BSS</a></li>
+              <li><a href="http://localhost/layanan/public/detbst" class="dropdown-item">BST</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dashboard Layanan</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <li><a href="http://localhost/layanan/public/dashdispen" class="dropdown-item">Dispensasi </a></li>
+              <li><a href="http://localhost/layanan/public/dashyudi" class="dropdown-item">Yudisium</a></li>
+              <li><a href="http://localhost/layanan/public/dashcuti" class="dropdown-item">Cuti/BSS</a></li>
+              <li><a href="http://localhost/layanan/public/dashbst" class="dropdown-item">BST</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Laporan</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <li><a href="http://localhost/layanan/public/dokdispen" class="dropdown-item">Dispensasi </a></li>
+              <li><a href="http://localhost/layanan/public/dokyudi" class="dropdown-item">Yudisium</a></li>
+              <li><a href="http://localhost/layanan/public/dokcuti" class="dropdown-item">Cuti/BSS</a></li>
+              <li><a href="http://localhost/layanan/public/dokbst" class="dropdown-item">BST</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+          <a href="http://localhost/layanan/public/setting" aria-haspopup="true" aria-expanded="false" class="nav-link">Setting</a>
+      </li>
+
+        </ul>
+
+       
+        <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                       <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            mahendra <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="http://localhost/layanan/public/logout"
+                                   onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+
+                                <form id="logout-form" action="http://localhost/layanan/public/logout" method="POST" style="display: none;">
+                                    <input type="hidden" name="_token" value="NCsBKSerDRU3YnHhqnSSdMHrSQjclzzQzIYejhLT">                                </form>
+                            </div>
+                        </li>
+                    </ul>
+      </div>
+
+    </div>
+  </nav>
+
+            <html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laporan Dispensasi</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="http://localhost/layanan/public/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <!-- Theme style -->
+  <link rel="stylesheet" href="http://localhost/layanan/public/dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="http://localhost/layanan/public/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <!-- summernote -->
+  <!-- Data table -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+  $('#example').DataTable();
+});
+    </script>
+
+    <style>
+      btn{
+        color:white;
+      }
+    </style>
+</head>
+
+<body class="hold-transition layout-top-nav">
+<div class="wrapper">
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Laporan Dispensasi</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item active"><a href="http://localhost/layanan/public/aak">Home</a></li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <div class="content">
+      <div class="container">
+      <a href="http://localhost/layanan/public/dokdispen/export_excel" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
+    <div class="table-responsive" style="padding:20px;width: 98%;">
+    
+     
+      <thead>
+        <tr>
+                      <th>NIM</th>
+                      <th>Nama</th>
+                      <th>E-mail</th>
+                      <th>Jurusan</th>
+                      <th>Jenis Dokumen</th>
+                      <th>Status</th>
+                      <th>Tanggal Masuk</th>
+                    
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                                        <td>17410100039</td>
+		              	<td>aditya martin</td>
+			              <td>17410100039@dinamika.ac.id</td>
+		              	<td>S1 Sistem Informasi</td>
+		              	<td>Cuti</td>
+		              	<td>selesai</td>
+		              	<td>2021-06-22 00:00:00</td>
+		              
+                    </tr>
+                                        <td>387880</td>
+		              	<td>Marsito Pradana</td>
+			              <td>michelle.prasetya@example.org</td>
+		              	<td>S1 Desain Komunikasi Visual</td>
+		              	<td>Yudisium</td>
+		              	<td>proses</td>
+		              	<td>2021-04-15 00:00:00</td>
+		              
+                    </tr>
+                                        <td>26081952</td>
+		              	<td>Anggabaya Gunarto</td>
+			              <td>novi.prasetyo@example.com</td>
+		              	<td>S1 Sistem Informasi</td>
+		              	<td>Yudisium</td>
+		              	<td>proses</td>
+		              	<td>2021-04-16 00:00:00</td>
+		              
+                    </tr>
+                                        <td>96654</td>
+		              	<td>Harsanto Wacana</td>
+			              <td>victoria66@example.org</td>
+		              	<td>S1 Desain Komunikasi Visual</td>
+		              	<td>Yudisium</td>
+		              	<td>selesai</td>
+		              	<td>2021-06-17 00:00:00</td>
+		              
+                    </tr>
+                                        <td>1</td>
+		              	<td>Jumari Martaka Firgantoro M.Kom.</td>
+			              <td>jailani.kanda@example.org</td>
+		              	<td>S1 Sistem Informasi</td>
+		              	<td>BST</td>
+		              	<td>selesai</td>
+		              	<td>2021-07-15 00:00:00</td>
+		              
+                    </tr>
+                                        <td>249045</td>
+		              	<td>Jatmiko Ardianto</td>
+			              <td>hassanah.kurnia@example.com</td>
+		              	<td>S1 Produksi Film Dan Telivisi</td>
+		              	<td>Yudisium</td>
+		              	<td>proses</td>
+		              	<td>2021-05-25 00:00:00</td>
+		              
+                    </tr>
+                                        <td>151761</td>
+		              	<td>Marwata Tamba</td>
+			              <td>kayla20@example.org</td>
+		              	<td>S1 Produksi Film Dan Telivisi</td>
+		              	<td>Yudisium</td>
+		              	<td>selesai</td>
+		              	<td>2021-06-24 00:00:00</td>
+		              
+                    </tr>
+                                        <td>44380845</td>
+		              	<td>Darimin Bambang Wijaya</td>
+			              <td>garda10@example.com</td>
+		              	<td>S1 Produksi Film Dan Telivisi</td>
+		              	<td>Dispensasi</td>
+		              	<td>selesai</td>
+		              	<td>2021-06-25 00:00:00</td>
+		              
+                    </tr>
+                                        <td>71764</td>
+		              	<td>Ajiono Uwais M.Farm</td>
+			              <td>hasim.rahayu@example.org</td>
+		              	<td>S1 Sistem Komputer</td>
+		              	<td>Cuti</td>
+		              	<td>proses</td>
+		              	<td>2021-06-25 00:00:00</td>
+		              
+                    </tr>
+                                        <td>2</td>
+		              	<td>Titi Riyanti</td>
+			              <td>qaryani@example.org</td>
+		              	<td>S1 Akutansi</td>
+		              	<td>BST</td>
+		              	<td>selesai</td>
+		              	<td>2021-06-25 00:00:00</td>
+		              
+                    </tr>
+                                        <td>9788</td>
+		              	<td>Mutia Halimah</td>
+			              <td>kmaheswara@example.org</td>
+		              	<td>S1 Desain Komunikasi Visual</td>
+		              	<td>Cuti</td>
+		              	<td>selesai</td>
+		              	<td>2021-05-27 00:00:00</td>
+		              
+                    </tr>
+                                        <td>3752900</td>
+		              	<td>Maryadi Natsir S.E.</td>
+			              <td>lukita98@example.net</td>
+		              	<td>S1 Desain Komunikasi Visual</td>
+		              	<td>Cuti</td>
+		              	<td>proses</td>
+		              	<td>2021-05-11 00:00:00</td>
+		              
+                    </tr>
+                                        <td>3136</td>
+		              	<td>Lanjar Sirait M.Kom.</td>
+			              <td>zwastuti@example.com</td>
+		              	<td>D3 Sistem Informasi</td>
+		              	<td>Yudisium</td>
+		              	<td>proses</td>
+		              	<td>2021-05-27 00:00:00</td>
+		              
+                    </tr>
+                                        <td>7731106</td>
+		              	<td>Akarsana Hakim</td>
+			              <td>qpuspasari@example.net</td>
+		              	<td>D3 Sistem Informasi</td>
+		              	<td>Dispensasi</td>
+		              	<td>selesai</td>
+		              	<td>2021-04-06 00:00:00</td>
+		              
+                    </tr>
+                                        <td>455</td>
+		              	<td>Garan Rendy Wijaya S.Gz</td>
+			              <td>embuh36@example.org</td>
+		              	<td>S1 Sistem Komputer</td>
+		              	<td>Cuti</td>
+		              	<td>selesai</td>
+		              	<td>2021-04-14 00:00:00</td>
+		              
+                    </tr>
+                                        <td>82904</td>
+		              	<td>Eli Fujiati S.Kom</td>
+			              <td>susanti.puspa@example.net</td>
+		              	<td>D3 Sistem Informasi</td>
+		              	<td>Cuti</td>
+		              	<td>selesai</td>
+		              	<td>2021-04-14 00:00:00</td>
+		              
+                    </tr>
+                                        <td>68317</td>
+		              	<td>Maya Tania Laksmiwati M.TI.</td>
+			              <td>saefullah.fitriani@example.com</td>
+		              	<td>S1 Desain Komunikasi Visual</td>
+		              	<td>Yudisium</td>
+		              	<td>selesai</td>
+		              	<td>2021-07-02 00:00:00</td>
+		              
+                    </tr>
+                                        <td>4457502</td>
+		              	<td>Ega Wijaya S.Farm</td>
+			              <td>handayani.kariman@example.net</td>
+		              	<td>S1 Desain Komunikasi Visual</td>
+		              	<td>Cuti</td>
+		              	<td>proses</td>
+		              	<td>2021-07-15 00:00:00</td>
+		              
+                    </tr>
+                                        <td>64178430</td>
+		              	<td>Kemba Adriansyah</td>
+			              <td>usihombing@example.org</td>
+		              	<td>S1 Sistem Komputer</td>
+		              	<td>Dispensasi</td>
+		              	<td>selesai</td>
+		              	<td>2021-05-12 00:00:00</td>
+		              
+                    </tr>
+                                        <td>4037719</td>
+		              	<td>Zizi Yolanda</td>
+			              <td>siti.firmansyah@example.net</td>
+		              	<td>S1 Sistem Komputer</td>
+		              	<td>Yudisium</td>
+		              	<td>selesai</td>
+		              	<td>2021-06-24 00:00:00</td>
+		              
+                    </tr>
+                                        <td>9</td>
+		              	<td>Setya Irawan</td>
+			              <td>olivia.kuswoyo@example.com</td>
+		              	<td>S1 Desain Komunikasi Visual</td>
+		              	<td>Yudisium</td>
+		              	<td>selesai</td>
+		              	<td>2021-07-21 00:00:00</td>
+		              
+                    </tr>
+                                        <td>4226273</td>
+		              	<td>Hendra Cakrajiya Siregar S.IP</td>
+			              <td>wardi.suwarno@example.com</td>
+		              	<td>S1 Sistem Informasi</td>
+		              	<td>Cuti</td>
+		              	<td>selesai</td>
+		              	<td>2021-07-23 00:00:00</td>
+		              
+                    </tr>
+                                        <td>82297232</td>
+		              	<td>Vicky Anggraini</td>
+			              <td>atmaja.ramadan@example.com</td>
+		              	<td>S1 Sistem Informasi</td>
+		              	<td>Yudisium</td>
+		              	<td>selesai</td>
+		              	<td>2021-07-24 00:00:00</td>
+		              
+                    </tr>
+                                        <td>3026418</td>
+		              	<td>Wakiman Hasim Nainggolan</td>
+			              <td>ika43@example.com</td>
+		              	<td>S1 Sistem Informasi</td>
+		              	<td>Dispensasi</td>
+		              	<td>selesai</td>
+		              	<td>2021-05-27 00:00:00</td>
+		              
+                    </tr>
+                                        <td>665615507</td>
+		              	<td>Alika Mardhiyah</td>
+			              <td>palastri.salsabila@example.net</td>
+		              	<td>S1 Desain Produk</td>
+		              	<td>Yudisium</td>
+		              	<td>proses</td>
+		              	<td>2021-07-29 00:00:00</td>
+		              
+                    </tr>
+                                        <td>59</td>
+		              	<td>Fitriani Namaga</td>
+			              <td>sihotang.lintang@example.com</td>
+		              	<td>S1 Sistem Informasi</td>
+		              	<td>Cuti</td>
+		              	<td>proses</td>
+		              	<td>2021-06-29 00:00:00</td>
+		              
+                    </tr>
+                                        <td>121323</td>
+		              	<td>agung</td>
+			              <td>agu.email</td>
+		              	<td>S1 Sistem Informasi</td>
+		              	<td>Dispensasi</td>
+		              	<td>selesai</td>
+		              	<td>2021-07-05 00:00:00</td>
+		              
+                    </tr>
+                                        <td>7</td>
+		              	<td>Ivan Ramadan S.Pd</td>
+			              <td>uchita.uwais@example.com</td>
+		              	<td>S1 Desain Komunikasi Visual</td>
+		              	<td>Cuti</td>
+		              	<td>selesai</td>
+		              	<td>2020-07-01 00:00:00</td>
+		              
+                    </tr>
+                                        <td>5</td>
+		              	<td>Amalia Rahayu S.Gz</td>
+			              <td>rmahendra@example.org</td>
+		              	<td>S1 Desain Komunikasi Visual</td>
+		              	<td>BST</td>
+		              	<td>selesai</td>
+		              	<td>2020-07-21 00:00:00</td>
+		              
+                    </tr>
+                                        <td>4</td>
+		              	<td>Gandi Kurniawan S.Pd</td>
+			              <td>gprakasa@example.org</td>
+		              	<td>S1 Desain Komunikasi Visual</td>
+		              	<td>Yudisium</td>
+		              	<td>selesai</td>
+		              	<td>2020-05-04 00:00:00</td>
+		              
+                    </tr>
+                                        <td>6</td>
+		              	<td>Lidya Usada S.Kom</td>
+			              <td>aryani.anita@example.com</td>
+		              	<td>S1 Desain Komunikasi Visual</td>
+		              	<td>Cuti</td>
+		              	<td>selesai</td>
+		              	<td>2020-07-02 00:00:00</td>
+		              
+                    </tr>
+                                        <td>916</td>
+		              	<td>Asmadi Prabowo</td>
+			              <td>tantri.oktaviani@example.org</td>
+		              	<td>S1 Sistem Komputer</td>
+		              	<td>Dispensasi</td>
+		              	<td>selesai</td>
+		              	<td>2020-05-10 00:00:00</td>
+		              
+                    </tr>
+                                        <td>973</td>
+		              	<td>Ana Wulandari</td>
+			              <td>widya.farida@example.com</td>
+		              	<td>S1 Produksi Film Dan Telivisi</td>
+		              	<td>Dispensasi</td>
+		              	<td>selesai</td>
+		              	<td>2020-06-13 00:00:00</td>
+		              
+                    </tr>
+                                        <td>239</td>
+		              	<td>Viman Situmorang</td>
+			              <td>manah42@example.net</td>
+		              	<td>S1 Sistem Komputer</td>
+		              	<td>Yudisium</td>
+		              	<td>selesai</td>
+		              	<td>2020-04-07 00:00:00</td>
+		              
+                    </tr>
+                                        <td>212</td>
+		              	<td>Warsa Kemal Kusumo</td>
+			              <td>rika66@example.net</td>
+		              	<td>S1 Akutansi</td>
+		              	<td>Cuti</td>
+		              	<td>selesai</td>
+		              	<td>2020-04-23 00:00:00</td>
+		              
+                    </tr>
+                                        <td>623</td>
+		              	<td>Sabrina Fujiati</td>
+			              <td>prahayu@example.com</td>
+		              	<td>S1 Desain Produk</td>
+		              	<td>Dispensasi</td>
+		              	<td>selesai</td>
+		              	<td>2020-04-12 00:00:00</td>
+		              
+                    </tr>
+                                        <td>731</td>
+		              	<td>Novi Uchita Laksita</td>
+			              <td>zulkarnain.ratna@example.com</td>
+		              	<td>S1 Sistem Informasi</td>
+		              	<td>Yudisium</td>
+		              	<td>selesai</td>
+		              	<td>2021-04-04 00:00:00</td>
+		              
+                    </tr>
+                                        <td>068</td>
+		              	<td>Balijan Irawan</td>
+			              <td>unamaga@example.org</td>
+		              	<td>S1 Akutansi</td>
+		              	<td>Cuti</td>
+		              	<td>selesai</td>
+		              	<td>2020-07-10 00:00:00</td>
+		              
+                    </tr>
+                                        <td>658</td>
+		              	<td>Waluyo Siregar S.H.</td>
+			              <td>emil.purnawati@example.org</td>
+		              	<td>S1 Sistem Komputer</td>
+		              	<td>Dispensasi</td>
+		              	<td>selesai</td>
+		              	<td>2020-07-23 00:00:00</td>
+		              
+                    </tr>
+                                        <td>153</td>
+		              	<td>Asmuni Najmudin S.Pd</td>
+			              <td>tri16@example.com</td>
+		              	<td>S1 Desain Komunikasi Visual</td>
+		              	<td>BST</td>
+		              	<td>selesai</td>
+		              	<td>2020-04-25 00:00:00</td>
+		              
+                    </tr>
+                                        <td>587</td>
+		              	<td>Dadi Adriansyah</td>
+			              <td>widya.saputra@example.com</td>
+		              	<td>S1 Akutansi</td>
+		              	<td>Yudisium</td>
+		              	<td>selesai</td>
+		              	<td>2020-05-05 00:00:00</td>
+		              
+                    </tr>
+                                        <td>218</td>
+		              	<td>Panca Jefri Uwais S.I.Kom</td>
+			              <td>slestari@example.com</td>
+		              	<td>S1 Akutansi</td>
+		              	<td>BST</td>
+		              	<td>proses</td>
+		              	<td>2021-08-01 00:00:00</td>
+		              
+                    </tr>
+                                        <td>093</td>
+		              	<td>Yono Iswahyudi</td>
+			              <td>chelsea.halim@example.org</td>
+		              	<td>S1 Akutansi</td>
+		              	<td>BST</td>
+		              	<td>selesai</td>
+		              	<td>2020-07-16 00:00:00</td>
+		              
+                    </tr>
+                                        <td>590</td>
+		              	<td>Surya Megantara</td>
+			              <td>pyulianti@example.org</td>
+		              	<td>S1 Akutansi</td>
+		              	<td>Dispensasi</td>
+		              	<td>selesai</td>
+		              	<td>2020-06-04 00:00:00</td>
+		              
+                    </tr>
+                                        <td>268</td>
+		              	<td>Ella Laksmiwati M.Ak</td>
+			              <td>yosef05@example.net</td>
+		              	<td>D3 Sistem Informasi</td>
+		              	<td>Cuti</td>
+		              	<td>selesai</td>
+		              	<td>2020-04-15 00:00:00</td>
+		              
+                    </tr>
+                                        <td>547</td>
+		              	<td>Lukman Hidayanto</td>
+			              <td>habibi.galak@example.net</td>
+		              	<td>S1 Sistem Informasi</td>
+		              	<td>BST</td>
+		              	<td>selesai</td>
+		              	<td>2020-07-22 00:00:00</td>
+		              
+                    </tr>
+                                        <td>234</td>
+		              	<td>Kasiyah Laksita</td>
+			              <td>niyaga29@example.org</td>
+		              	<td>S1 Desain Produk</td>
+		              	<td>Yudisium</td>
+		              	<td>selesai</td>
+		              	<td>2020-07-06 00:00:00</td>
+		              
+                    </tr>
+                                        <td>230</td>
+		              	<td>Janet Laksmiwati</td>
+			              <td>psiregar@example.net</td>
+		              	<td>S1 Desain Produk</td>
+		              	<td>Yudisium</td>
+		              	<td>selesai</td>
+		              	<td>2020-05-04 00:00:00</td>
+		              
+                    </tr>
+                                        <td>44624</td>
+		              	<td>Sungkem anjang</td>
+			              <td>sung@gmail.id</td>
+		              	<td>S1 Akutansi</td>
+		              	<td>Dispensasi</td>
+		              	<td>selesai</td>
+		              	<td>2021-07-25 00:00:00</td>
+		              
+                    </tr>
+                                        <td>12566</td>
+		              	<td>Diana angela</td>
+			              <td>dia@gmail.vom</td>
+		              	<td>S1 Desain Komunikasi Visual</td>
+		              	<td>Dispensasi</td>
+		              	<td>proses</td>
+		              	<td>2021-08-02 00:00:00</td>
+		              
+                    </tr>
+                        
+    </div>
+    </div></div>
+    <!-- /.content -->
+  </div>
+    
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+
+<!-- jQuery UI 1.11.4 -->
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="http://localhost/layanan/public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="http://localhost/layanan/public/dist/js/adminlte.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="http://localhost/layanan/public/dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="http://localhost/layanan/public/dist/js/pages/dashboard.js"></script>
+<!-- Data table -->
+
+</body>
+</html>
